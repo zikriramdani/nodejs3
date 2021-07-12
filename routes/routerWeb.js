@@ -15,11 +15,11 @@ module.exports = async function (app) {
         const limits = req.body.limits || req.query.limits || 8;
 
         axios
-        .post(process.env.URL + 'productList' + '/?page=' + pages + '&limits=' + limits)
-        .then(dataProduct => {
+        .post(process.env.URL + 'articleList' + '/?page=' + pages + '&limits=' + limits)
+        .then(dataArticle => {
             res.render('pages/index.ejs', {
                 title: 'Home',
-                product: dataProduct.data.resData
+                article: dataArticle.data.resData
             });
         })
         .catch(err => {
