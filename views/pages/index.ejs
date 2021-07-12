@@ -1,0 +1,22 @@
+<%- include('../layout/head'); %>
+    
+<div class="container-fluid mt-5 mb-5">
+    <div class="row">
+        <!-- Article -->
+        
+            <div class="col-12 mb-3">
+                <h5 class="card-title mb-0 text-center">No product data</h5>
+            </div>
+    </div>
+
+</div>
+
+<script>
+    async function handleSelect(values) {
+        $(document).ready(async function(){
+            window.location.href = '/?limits=' + values;
+        });
+    }
+ </script>
+
+<%- include('../layout/footer'); %>
