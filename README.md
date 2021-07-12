@@ -17,3 +17,9 @@ Run `npm run dev` for a dev server. Navigate to `http://localhost:8080/`. The ap
 - isi DB_DATABASE, DB_USERNAME, DB_PASSWORD, sesuaikan dengan settingan database kamu
 - di dalam directory project buka terminal, ketikan "npm run dev"
 - buka browser, ketikan url "localhost:8080"
+
+# Url API
+- localhost:8080/api/v1/article/add ===> createArticle,
+- localhost:8080/api/v1/articleList ===> readArticle,
+- localhost:8080/api/v1/article/:id ===> updateArticle,
+- localhost:8080/api/v1/article/:id ===> deleteArticle
