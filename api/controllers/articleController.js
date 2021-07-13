@@ -81,30 +81,45 @@ module.exports = {
         const { title, content, category, status } = req.body;
 
         models.tb_article
-        .update({
-            title: title,
-            content: content,
-            category: category,
-            status: status
-        }, {
+        .findOne({
             where: {
-                id: articleId
+                id : articleId
             }
-        })
-        .then(tb_articles => {
-            if (tb_articles) {
-                res.status(200).json({
-                    'resCode': 200,
-                    'resData': tb_articles,
-                    'resMessage': 'Successfull'
+        }).then(tb_article => {
+            if (tb_article) {
+
+                models.tb_article
+                .update({
+                    title: title,
+                    content: content,
+                    category: category,
+                    status: status
+                }, {
+                    where: {
+                        id: articleId
+                    }
+                })
+                .then(tb_articles => {
+                    if (tb_articles) {
+                        res.status(200).json({
+                            'resCode': 200,
+                            'resData': tb_articles,
+                            'resMessage': 'Successfull'
+                        });
+                    }
+                })
+                .catch(err => {
+                    res.status(201).json({
+                        'resCode': 201,
+                        'resMessage': err
+                    });
                 });
-            };
-        })
-        .catch(err => {
-            res.status(201).json({
-                'resCode': 201,
-                'resMessage': err
-            });
+            } else {
+                res.status(200).send({
+                    'resCode': 200,
+                    'resMessage': 'Data not found'
+                });
+            }
         });
     },
 
@@ -113,25 +128,40 @@ module.exports = {
         const articleId = req.params.id;
 
         models.tb_article
-        .destroy({
+        .findOne({
             where: {
-                id: articleId
+                id : articleId
             }
-        })
-        .then(tb_articles => {
-            if (tb_articles) {
-                res.status(200).json({
-                    'resCode': 200,
-                    'resData': tb_articles,
-                    'resMessage': 'Successfull'
+        }).then(tb_article => {
+            if (tb_article) {
+
+                models.tb_article
+                .destroy({
+                    where: {
+                        id: articleId
+                    }
+                })
+                .then(tb_articles => {
+                    if (tb_articles) {
+                        res.status(200).json({
+                            'resCode': 200,
+                            'resData': tb_articles,
+                            'resMessage': 'Successfull'
+                        });
+                    };
+                })
+                .catch(err => {
+                    res.status(201).json({
+                        'resCode': 201,
+                        'resMessage': err
+                    });
                 });
-            };
-        })
-        .catch(err => {
-            res.status(201).json({
-                'resCode': 201,
-                'resMessage': err
-            });
+            } else {
+                res.status(200).send({
+                    'resCode': 200,
+                    'resMessage': 'Data not found'
+                });
+            }
         });
     }
 

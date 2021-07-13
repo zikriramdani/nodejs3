@@ -23,3 +23,4 @@ Run `npm run dev` for a dev server. Navigate to `http://localhost:8080/`. The ap
 - localhost:8080/api/v1/articleList ===> readArticle,
 - localhost:8080/api/v1/article/:id ===> updateArticle,
 - localhost:8080/api/v1/article/:id ===> deleteArticle
+- localhost:8080/api/v1/articleList?limits=2&page=1 ===> filterLimitArticle;
